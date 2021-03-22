@@ -1,2 +1,2 @@
 language = "python3"
-run = "python 00_RPS_sandpit.py"
+run = "python 07_Game_Summary.py"

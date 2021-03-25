@@ -3,6 +3,7 @@ import random
 # Function go here 
 def check_rounds():
   while True: 
+    print()
     response = input("How many rounds?: ")
 
     rounds_error = "Please type either <enter> or an integer that is more than 0"
@@ -40,9 +41,62 @@ def choice_checker(question, valid_list, error):
   print(error)
   print()
   
+def instructions():
+    statement_generator("How To Play", "*")
+    print()
+    print("Pick an integer that is more than 0")
+    print()
+    print("Then for each round, choose from rock / paper/ scissors (or xxx to quit)")
+    print("You can type r / p / s / xxx if you don't want to type the entire word.")
+    print()
+    print("The rules are...")
+    print("- Rock beats scissors")
+    print("- Scissors beats paper")
+    print("- Paper beats rock ")
+    print()
+    print("**** Have Fun ****")
+    return""
+
+
+def yes_no(question):
+    valid = False
+    while not valid:
+        response = input(question).lower()
+        if response == "yes" or response == "y":
+            response = "yes"
+            return response
+
+        elif response == "no" or response == "n":
+            response = "no"
+            return response
+
+        else:
+            print("Please answer yes/no")
+            print()
+
+
 
 
 # Main routine goes here 
+played_before = yes_no("Have you played the game before? ")
+print()
+
+def statement_generator(statement, decoration):
+
+    sides = decoration * 3
+
+    statement = "{} {} {}".format(sides, statement, sides)
+    top_bottom = decoration * len(statement)
+
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
+
+    return ""
+
+if played_before == "no":
+    instructions()
+
 
 # Lists of valid responses 
 yes_no_list = ["yes", "no"]
@@ -59,7 +113,6 @@ rounds_played = 0
 rounds_lost = 0 
 rounds_drawn = 0
 
-
 # Ask user for no of rounds, <enter> for infiniye mode
 
 rounds = check_rounds()
@@ -68,7 +121,8 @@ end_game = "no"
 while end_game == "no":
 
   # Start of Game Play Loop 
-
+  if rounds != "" and rounds_played == rounds - 1:
+    end_game = "yes"
   # Rounds Heading 
   print()
   if rounds == "":
@@ -78,9 +132,6 @@ while end_game == "no":
     heading = "Round {} of {}".format(rounds_played + 1,  rounds)
 
   print(heading)
-
-
-
 
   # Ask user for choice and check it's valid 
 
@@ -93,31 +144,34 @@ while end_game == "no":
   # End game if exit code is typed 
   if choose == "xxx":
         break 
+  else:
+    rounds_played += 1
 
+  if rounds == rounds_played: 
+    break 
   # compare choice
   if comp_choice == choose:
       result = "tie"
+      feedback = "It's a tie"
       rounds_drawn += 1
   elif choose == "rock" and comp_choice == "scissors":
     result = "won"
   elif choose == "paper" and comp_choice == "rock":
     result = "won"
-  elif choose == "scissors" and comp_choice == "paper":
+  elif choose == "scissors" and comp_choice == "paper":  
     result = "won"
   else:
     result = "lost"
     rounds_lost +=1
-
-  if result == "tie":
-    feedback = "It's a tie"
-  else:
+  
+  if result != "tie":
     feedback ="{} vs {} - you {}".format(choose, comp_choice, result)
 
-    # Output results....
-    print("{} vs {} - you {}".format(choose, comp_choice, result))
 
+  print("lost: {}, drawn: {}".format(rounds_lost, rounds_drawn))
 
-    rounds_played += 1
+  # Output results....
+  print(feedback)
 
   # end game if requested # of rounds has been played 
 

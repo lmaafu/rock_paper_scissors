@@ -22,7 +22,7 @@ def check_rounds():
         print(rounds_error)
         continue
 
-      return response 
+    return response 
 
 def choice_checker(question, valid_list, error):
   
@@ -171,6 +171,7 @@ while end_game == "no":
   print("lost: {}, drawn: {}".format(rounds_lost, rounds_drawn))
 
   # Output results....
+  print()
   print(feedback)
 
   # end game if requested # of rounds has been played 

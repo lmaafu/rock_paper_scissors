@@ -31,7 +31,7 @@ def instructions():
     print("- Scissors beats paper")
     print("- Paper beats rock ")
     print()
-    print("**** Have Fun ****")
+    print("**** HAVE FUN ****")
     return""
 
 

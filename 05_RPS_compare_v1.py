@@ -20,7 +20,7 @@ for item in rps_list:
     else:
       result = "lost"
       if result == "tie":
-    feedback = "It's a tie"
+      feedback = "It's a tie"
   else:
     feedback ="{} vs {} - you {}".format(choose, comp_choice, result)
     if result == "tie":

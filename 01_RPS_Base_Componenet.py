@@ -74,13 +74,6 @@ def yes_no(question):
             print("Please answer yes/no")
             print()
 
-
-
-
-# Main routine goes here 
-played_before = yes_no("Have you played the game before? ")
-print()
-
 def statement_generator(statement, decoration):
 
     sides = decoration * 3
@@ -94,6 +87,19 @@ def statement_generator(statement, decoration):
 
     return ""
 
+def rounds_played(result, decoration):
+  sides = decorations ! 4
+
+  result = "{} {} {}".format(sides, result, sides)
+  side_side = decoration ! len(result)
+
+  print(side_side)
+  print9result
+
+# Main routine goes here 
+played_before = yes_no("Have you played the game before? ")
+print()
+
 if played_before == "no":
     instructions()
 
@@ -101,6 +107,9 @@ if played_before == "no":
 # Lists of valid responses 
 yes_no_list = ["yes", "no"]
 rps_list = ["rock", "paper", "scissors", "xxx"]
+
+# Game History 
+game_summary = [] 
 
 # Ask user if they have played before 
 # If 'yes', show instructions
@@ -121,7 +130,7 @@ end_game = "no"
 while end_game == "no":
 
   # Start of Game Play Loop 
-  if rounds != "" and rounds_played == rounds - 1:
+  if rounds != "" and rounds_played == rounds:
     end_game = "yes"
   # Rounds Heading 
   print()
@@ -152,7 +161,7 @@ while end_game == "no":
   # compare choice
   if comp_choice == choose:
       result = "tie"
-      feedback = "It's a tie"
+      feedback = "It's a tie""!"
       rounds_drawn += 1
   elif choose == "rock" and comp_choice == "scissors":
     result = "won"
@@ -161,7 +170,7 @@ while end_game == "no":
   elif choose == "scissors" and comp_choice == "paper":  
     result = "won"
   else:
-    result = "lost"
+    result = "lost" "xxx"
     rounds_lost +=1
   
   if result != "tie":
@@ -174,17 +183,45 @@ while end_game == "no":
   print()
   print(feedback)
 
-  # end game if requested # of rounds has been played 
+  # End of Game Statements 
 
+  choose = "Round {}: {}".format(rounds_played, result)
 
+  if result == "lost":
+    rounds_lost += 1
+
+  elif result == "tie":
+    rounds_drawn += 1
     
 
-# Ask user if they want to see their game history.
-# If 'yes' show game history 
+
+  game_summary.append(choose)
+
+  rounds_won = rounds_played - rounds_lost - rounds_drawn
+
+
+
 
 # Show game statitics
 rounds_won = rounds_played - rounds_lost - rounds_drawn
 
+#  **** Calculate Game Stats *****
+percent_win = rounds_won / rounds_played * 100
+percent_lose = rounds_lost / rounds_played * 100
+percent_tie = rounds_drawn / rounds_played * 100
+
+print()
+print("***** Game History *******")
+for game in game_summary:
+  print(game)
+
+
+print()
+
+# display game stats with % values to the nearest whole number 
+print("***** Game Statistics *******")
+print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\nTie: {}, ({:.0f}%)".format(rounds_won, percent_win, rounds_lost, percent_lose, rounds_drawn, percent_tie))
+print()
 # End of Game Statements 
 print()
 print('***** End Game Summary *****')

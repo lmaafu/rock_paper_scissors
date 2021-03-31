@@ -2,9 +2,9 @@ game_summary = []
 
 rounds_lost = 0
 rounds_drawn = 0
-rounds_played = 5
+rounds_played = 0
 
-for item in range(0, 5):
+for item in range(0,):
   results = input("choose results: ")
 
   outcome = "Round {}: {}".format(item, results)
@@ -30,6 +30,7 @@ print()
 print("***** Game History *******")
 for game in game_summary:
   print(game)
+
 
 print()
 

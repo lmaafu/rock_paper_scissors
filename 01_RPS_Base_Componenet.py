@@ -87,14 +87,6 @@ def statement_generator(statement, decoration):
 
     return ""
 
-def rounds_played(result, decoration):
-  sides = decorations ! 4
-
-  result = "{} {} {}".format(sides, result, sides)
-  side_side = decoration ! len(result)
-
-  print(side_side)
-  print9result
 
 # Main routine goes here 
 played_before = yes_no("Have you played the game before? ")
@@ -161,7 +153,8 @@ while end_game == "no":
   # compare choice
   if comp_choice == choose:
       result = "tie"
-      feedback = "It's a tie""!"
+      result_decoration = "!"
+      feedback = "It's a tie"
       rounds_drawn += 1
   elif choose == "rock" and comp_choice == "scissors":
     result = "won"
@@ -170,14 +163,19 @@ while end_game == "no":
   elif choose == "scissors" and comp_choice == "paper":  
     result = "won"
   else:
-    result = "lost" "xxx"
+    result = "lost" 
+    result_decoration = "#"
     rounds_lost +=1
-  
-  if result != "tie":
-    feedback ="{} vs {} - you {}".format(choose, comp_choice, result)
+
+  # won decoration
+  if result == "won":
+    result_decoration = "$"
 
 
-  print("lost: {}, drawn: {}".format(rounds_lost, rounds_drawn))
+  feedback ="{} vs {} - you {}".format(choose, comp_choice, result)
+  statement_generator(feedback, result_decoration) 
+
+  print("won {}, lost: {}, drawn: {}".format(rounds_played, rounds_lost, rounds_drawn))
 
   # Output results....
   print()

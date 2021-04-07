@@ -175,7 +175,10 @@ while end_game == "no":
   feedback ="{} vs {} - you {}".format(choose, comp_choice, result)
   statement_generator(feedback, result_decoration) 
 
-  print("won {}, lost: {}, drawn: {}".format(rounds_played, rounds_lost, rounds_drawn))
+  # Show game statitics
+  rounds_won = rounds_played - rounds_drawn - rounds_lost
+
+  print("won {}, lost: {}, drawn: {}".format(rounds_won, rounds_lost, rounds_drawn))
 
   # Output results....
   print()
@@ -200,8 +203,6 @@ while end_game == "no":
 
 
 
-# Show game statitics
-rounds_won = rounds_played - rounds_lost - rounds_drawn
 
 #  **** Calculate Game Stats *****
 percent_win = rounds_won / rounds_played * 100

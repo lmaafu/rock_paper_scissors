@@ -126,13 +126,16 @@ while end_game == "no":
     end_game = "yes"
   # Rounds Heading 
   print()
+  #continuous rounds
   if rounds == "":
     heading = "Continuous Mode: Round {}".format(rounds_played +1)
-
+  # Specific rounds
   else:
     heading = "Round {} of {}".format(rounds_played + 1,  rounds)
 
-  print(heading)
+  heading_decoration = "*"
+  statement_generator(heading, heading_decoration)
+
 
   # Ask user for choice and check it's valid 
 
@@ -175,33 +178,19 @@ while end_game == "no":
   feedback ="{} vs {} - you {}".format(choose, comp_choice, result)
   statement_generator(feedback, result_decoration) 
 
-  # Show game statitics
-  rounds_won = rounds_played - rounds_drawn - rounds_lost
+# Show game statitics
+rounds_won = rounds_played - rounds_lost - rounds_drawn
 
-  print("won {}, lost: {}, drawn: {}".format(rounds_won, rounds_lost, rounds_drawn))
+print("won {}, lost: {}, drawn: {}".format(rounds_won, rounds_lost, rounds_drawn))
 
-  # Output results....
-  print()
-  print(feedback)
+# Output results....
+print()
+print(feedback)
 
-  # End of Game Statements 
-
-  choose = "Round {}: {}".format(rounds_played, result)
-
-  if result == "lost":
-    rounds_lost += 1
-
-  elif result == "tie":
-    rounds_drawn += 1
-    
+# End of Game Statements 
 
 
-  game_summary.append(choose)
-
-  rounds_won = rounds_played - rounds_lost - rounds_drawn
-
-
-
+game_summary.append(choose)
 
 
 #  **** Calculate Game Stats *****
